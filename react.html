@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade Prática - Biblioteca React</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: black;
+            color: #BF9DDF;
+            margin: 20px;
+        }
+        .card {
+            border: 1px solid #BF9DDF;
+            padding: 10px;
+            margin: 10px;
+            background: #1a1a1a;
+            border-radius: 8px;
+        }
+        h1, h3 {
+            color: #BF9DDF;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        // Componente Card para exibir produtos
+        const Card = (props) => {
+            return (
+                <div className="card">
+                    <h3>{props.nome}</h3>
+                    <p>{props.descricao}</p>
+                    <p>Preço: R$ {props.preco}</p>
+                </div>
+            );
+        };
+
+        // Componente principal App
+        const App = () => {
+            // Array de produtos
+            const produtos = [
+                { nome: "Notebook", descricao: "Eletrônico", preco: "3500,00" },
+                { nome: "Mouse", descricao: "Acessório", preco: "120,00" },
+                { nome: "Teclado", descricao: "Periférico", preco: "250,00" },
+                { nome: "Monitor", descricao: "Display", preco: "1200,00" }
+            ];
+
+            return (
+                <div>
+                    <h1>Minha Aplicação</h1>
+                    <p>Interface com React</p>
+                    {produtos.map((produto, index) => (
+                        <Card
+                            key={index}
+                            nome={produto.nome}
+                            descricao={produto.descricao}
+                            preco={produto.preco}
+                        />
+                    ))}
+                    <footer style={{textAlign: 'center', marginTop: '40px', color: '#BF9DDF', fontSize: '14px'}}>
+                        PUC - GO 2026<br />
+                        Atividade prática - biblioteca react<br />
+                        Aluna: Roberta Souza Silva<br />
+                        Professor: Thalles Bruno Gonçalves
+                    </footer>
+                </div>
+            );
+        };
+
+        ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+    </script>
+</body>
+</html>
